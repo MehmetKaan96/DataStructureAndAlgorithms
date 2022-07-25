@@ -14,7 +14,7 @@ class Array{
         //     std::cout<<"Array deleted";
         // };
         void Display(Array arr);
-        void Reverse(Array arr);
+        void Reverse(Array *arr);
         void LeftShift(Array arr);
         void LeftRotate(Array arr);
         void RightShift(Array arr);
@@ -27,14 +27,16 @@ Array::Array(int size)
     A= new int[size];//created an array of size "size" in heap;
 }
 
-void Array::Reverse(Array arr){
+void Array::Reverse(Array *arr){
+   
     int i,j;
-    for (i = 0,j=arr.length-1; i < j; i++,j--)
+    for (i = 0,j=arr->length-1; i < j; i++,j--)
     {
         int temp;
-        temp = arr.A[i];
-        arr.A[i] = arr.A[j];
-        arr.A[j] = temp;
+        temp = arr->A[i];
+        arr->A[i] = arr->A[j];
+        arr->A[j] = temp;
+        
     }
 }
 
@@ -95,11 +97,11 @@ int main()
 {
     Array arr(5);
     arr.create();
-    // arr.Reverse(arr);
+    arr.Reverse(&arr);
     // arr.LeftShift(arr);
     // arr.LeftRotate(arr);
     // arr.RightShift(arr);
-    arr.RightRotate(arr);
+    // arr.RightRotate(arr);
     arr.Display(arr);
 
     return 0;
